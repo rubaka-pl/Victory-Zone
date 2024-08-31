@@ -1,0 +1,618 @@
+@import "./variables.scss";
+@import "./reset.scss";
+@import "./media.scss";
+@import "./mixin.scss";
+// ===========================================================
+// Общие стили
+#addGameButton {
+  display: flex; /* Используем Flexbox для центрирования */
+  align-items: center; /* Центрируем по вертикали */
+  justify-content: center; /* Центрируем по горизонтали */
+  width: 50px; /* Ширина кнопки */
+  height: 50px; /* Высота кнопки */
+  border: none; /* Убираем обводку кнопки */
+  background-color: $color-hover-bg; /* Цвет фона кнопки */
+  border-radius: 50%; /* Круглая кнопка */
+  cursor: pointer; /* Курсор при наведении */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для кнопки */
+  margin: 8px auto;
+  i {
+    font-size: 30px; /* Размер иконки */
+    color: #333; /* Цвет иконки */
+  }
+}
+
+#addGameForm {
+  padding: 20px;
+  margin: 30px auto;
+  box-shadow: 0 0 10px #1aeeef;
+  border: 1px solid #35407e;
+  background-color: #1b2141;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+
+  label {
+    font-size: 22px;
+    margin-bottom: 8px;
+    letter-spacing: $letter-spacing;
+  }
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #35407e;
+    border-radius: $border-radius;
+    background-color: #050e2d;
+    color: $color-white;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-family: $font-family;
+  }
+  button {
+    background-color: #1aeeef;
+    color: $color-black;
+    border: none;
+    padding: 12px;
+    border-radius: $border-radius;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #050e2d; /* Цвет фона при наведении */
+    color: #1aeeef; /* Цвет текста при наведении */
+  }
+}
+
+a {
+  color: $color-white;
+}
+
+body {
+  background: $color-background;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-hover-bg;
+  border-radius: 5px;
+}
+
+// Стили для header + затемнение на хедер
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 7px 5%;
+  @include flex-layout(space-between);
+  transition: 0.5s;
+  z-index: 100;
+  &.sticky {
+    background: rgba(27, 33, 65, 0.7);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+  }
+
+  .logo {
+    user-select: none;
+    position: relative;
+    color: $color-white;
+    font-size: 2em;
+    font-weight: 700;
+  }
+
+  .nav {
+    @include flex-layout(center);
+  }
+
+  ul li {
+    margin: 10px;
+
+    a {
+      padding: 10px 20px;
+      border-radius: $border-radius;
+
+      &:hover {
+        background: $color-hover-bg;
+        color: $color-hover-text;
+        box-shadow: $box-shadow-hover;
+      }
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .searchBx {
+    display: flex;
+    align-items: center;
+    background: $color-white;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .searchBx input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #000;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .searchBx a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    color: #fff;
+    border-radius: 0 8px 8px 0;
+    text-decoration: none;
+    font-size: 1.4em;
+  }
+
+  .searchBx i {
+    margin-left: 5px;
+    font-size: 1.4em;
+    color: #000;
+  }
+}
+
+// Стили для banner
+.banner {
+  position: relative;
+  @include flex-layout(center);
+  @include full-size;
+  padding: 0 100px;
+
+  .bg {
+    position: relative;
+    @include flex-layout(center);
+    @include full-size;
+    img {
+      width: 280px;
+    }
+  }
+
+  .content {
+    width: 50%;
+    height: 100%;
+  }
+
+  h2 {
+    font-size: 4em;
+    color: $color-white;
+    letter-spacing: $letter-spacing;
+  }
+
+  p {
+    width: 600px;
+    font-size: 1.2em;
+    color: $text-color;
+    letter-spacing: $letter-spacing;
+  }
+  a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: 1px solid $color-hover-bg;
+    font-weight: 700;
+    border-radius: $border-radius;
+    color: #fff;
+    letter-spacing: $letter-spacing;
+    &:hover {
+      background: $color-hover-bg;
+      border: none;
+      color: $color-hover-text;
+    }
+  }
+}
+
+.about {
+  position: relative;
+  width: 100%;
+  min-height: 75vh;
+  padding: 0 100px;
+  @include flex-layout(space-evenly);
+}
+.contentBx {
+  width: 50%;
+  margin: 20px;
+  h2 {
+    font-size: 3em;
+    font-weight: 700;
+    color: $color-white;
+  }
+  p {
+    max-width: 600px;
+    text-align: justify;
+    color: $text-color;
+    &:nth-of-type(2) {
+      margin: 15px 0;
+    }
+  }
+
+  a {
+    @include button();
+  }
+  #additional-text {
+    display: none;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  #additional-text.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Стили для games
+
+.games {
+  padding: 0 100px;
+  width: 100%;
+  min-height: 100vh;
+  @include flex-layout(center);
+  flex-direction: column;
+  margin: 40px auto;
+
+  h2 {
+    color: $color-white;
+    margin: 10px 0;
+  }
+  p {
+    color: red;
+  }
+  ul {
+    @include flex-layout(center);
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    li {
+      padding: 10px 20px;
+      border-radius: $border-radius;
+      margin: 5px;
+      letter-spacing: $letter-spacing;
+      cursor: pointer;
+      color: $color-white;
+      &.active {
+        background: $color-hover-bg;
+        color: $color-background;
+        box-shadow: $box-shadow-hover;
+      }
+    }
+  }
+  .cardBx {
+    width: 100%;
+    min-height: 100%;
+    @include flex-layout(center);
+    flex-wrap: wrap;
+
+    .card {
+      overflow-x: hidden;
+      width: 270px;
+      border-radius: 10px;
+      margin: 20px 40px;
+      background: $color-header;
+      overflow-x: hidden;
+      position: relative; /* Важно для overlay */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center top;
+        transition:
+          transform 0.3s ease,
+          filter 0.3s ease;
+      }
+      &.hide {
+        display: none !important;
+      }
+      //overlay
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 59%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+
+        .overlay_text {
+          color: $color-white;
+          font-size: 20px;
+          text-align: center;
+          margin: 0;
+        }
+      }
+
+      &:hover {
+        img {
+          transform: scale(0.93);
+          filter: brightness(70%);
+        }
+
+        .overlay {
+          opacity: 1;
+        }
+      }
+
+      .content {
+        padding: 10px;
+
+        h4 {
+          font-size: 12px;
+          color: $color-white;
+          margin: 15px 0;
+        }
+
+        .progress-line {
+          position: relative;
+          height: 10px;
+          width: 100%;
+          background: $progress-bg;
+          margin-bottom: 15px;
+          border-radius: 10px;
+
+          span {
+            position: absolute;
+            height: 100%;
+            width: 0; // Начальная ширина для анимации
+            border-radius: 10px;
+            background: $color-hover-bg;
+            box-shadow: $box-shadow-hover;
+            transform-origin: left center; // Убедитесь, что масштабирование идет от левого края
+            transition: width 1s cubic-bezier(1, 0, 0.5, 1); // Используйте transition для плавного изменения ширины
+          }
+        }
+
+        .info {
+          border-top: 2px solid $progress-bg;
+          padding: 5px;
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            font-size: 1em;
+            color: $color-white;
+          }
+
+          span {
+            color: $color-hover-bg;
+          }
+
+          a {
+            @include button();
+          }
+        }
+      }
+    }
+  }
+}
+
+.tournaments {
+  margin: 85px 0;
+  padding: 0 100px;
+  width: 100%;
+  min-height: 100vh;
+  @include flex-layout(center);
+  flex-direction: column;
+
+  h2 {
+    color: $color-white;
+    margin: 10px 0;
+  }
+  .boxBx {
+    width: 100%;
+    min-height: 100%;
+    @include flex-layout(center);
+    flex-wrap: wrap;
+
+    .box {
+      width: 350px;
+      border-radius: 10px;
+      margin: 20px 40px;
+      background: $color-header;
+      overflow: hidden;
+
+      .content {
+        padding: 10px;
+
+        h4 {
+          color: $color-white;
+          margin-top: 15px;
+
+          span {
+            color: $color-hover-bg;
+          }
+          p {
+            text-align: justify;
+            color: $text-color;
+            margin-top: 10px;
+          }
+        }
+        .btn {
+          display: flex;
+          justify-content: space-between;
+
+          .watch {
+            @include button();
+          }
+          .join {
+            @include button();
+            & {
+              color: $color-hover-text;
+              background: $color-hover-bg;
+              box-shadow: 0 0 10px #1aeeef;
+            }
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// FORM
+
+.contact {
+  padding: 20px 100px;
+  width: 100%;
+  min-height: 50vh;
+  @include flex-layout(center);
+
+  img {
+    height: 100%;
+    width: 50%;
+    object-fit: 50%;
+    border-radius: 10px;
+  }
+
+  .form {
+    width: 100%;
+    margin: 20px;
+
+    h1 {
+      color: $color-white;
+      text-align: center;
+    }
+
+    .inputBx {
+      z-index: 111;
+      text-align: center;
+      margin: 10px auto;
+      width: 70%;
+
+      label {
+        color: $color-white;
+      }
+      input,
+      textarea,
+      button {
+        margin-bottom: 10px;
+        border: none;
+        outline: none;
+        padding: 10px;
+        width: 100%;
+        color: $color-white;
+        background: $color-header;
+        min-height: 15px;
+        font-size: 1.1em;
+
+        textarea {
+          height: 150px;
+        }
+      }
+      button[type="submit"] {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 15px 0;
+        outline: none;
+        background: transparent;
+        border: 1px solid #1aeeef;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 700;
+        color: $color-white;
+        letter-spacing: 1px;
+
+        &:hover {
+          background: $color-hover-bg;
+          border: none;
+          color: $color-background;
+          box-shadow: $box-shadow-hover;
+        }
+      }
+    }
+  }
+}
+
+// FOOTER
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+
+  .info {
+    @include flex-layout(space-between);
+    width: 85vh;
+
+    .logo {
+      position: relative;
+      color: $color-white;
+      text-decoration: none;
+      font-size: 2em;
+      font-weight: 700;
+    }
+    a {
+      font-size: 2em;
+      @include flex-layout(center);
+    }
+
+    p {
+      color: $text-color;
+    }
+    ul {
+      margin: 10px 0;
+      @include flex-layout(center);
+      li {
+        height: 50px;
+        width: 50px;
+        margin: 5px;
+        border-radius: 50%;
+        @include flex-layout(center);
+        border: 1px solid #1aeeef;
+
+        &:hover {
+          background: #1aefefa8;
+          border: none;
+          box-shadow: $box-shadow-hover;
+        }
+      }
+    }
+  }
+}
+@import "../scss/media.scss";

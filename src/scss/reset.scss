@@ -1,0 +1,27 @@
+@import "./variables.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+  scroll-behavior: smooth;
+}
+
+body,
+header {
+  overflow-x: hidden;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+input,
+a {
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
