@@ -28,3 +28,4 @@ In this project, I developed a website with a focus on optimizing and automating
   - **Real-time preview of changes** during development
 
 ---
+https://regal-cupcake-632db1.netlify.app/
